@@ -18,6 +18,17 @@ const Library = ({songs, setCurrentSong, audioRef, isPlaying, setSongs, libraryS
         })
         setSongs(newSongs);
     }, [currentSong])
+
+    useEffect(() => {
+        if (isPlaying) {
+            const playPromise = audioRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise.then((audio) => {
+                    audioRef.current.play();
+                })
+            }
+        }
+    }, [currentSong])
     return(
         <div className={`library ${libraryStatus ? "active-library" : ""}`}>
             <h2>Library</h2>

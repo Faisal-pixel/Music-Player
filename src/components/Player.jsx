@@ -48,7 +48,7 @@ const Player = ({ isPlaying, setIsPlaying, audioRef, songInfo, setSongInfo, song
             <div className="time-control">
                 <p>{formatTime(songInfo.currentTime)}</p>
                 <input min="0" max={songInfo.duration || 0} value={songInfo.currentTime} type="range" onChange={dragHandler} />
-                <p>{formatTime(songInfo.duration)}</p>
+                <p>{songInfo.duration ? formatTime(songInfo.duration) : "0:00"}</p>
             </div>
             <div className="play-control">
             <FontAwesomeIcon onClick={() => skipTrackHandler("skip-back")} className="skip-back" size="2x" icon={faAngleLeft}/>
